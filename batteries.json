@@ -1,19 +1,19 @@
-{"batteries":[
+    [
     {
         "id": "A1",
         "name":"VARTA pulse neo 6",
         "type":"AC",
         "capacity":5.8,
         "efficiency_rank":12,
-        "average_efficiency":0.978,
+        "average_efficiency":0.978
     },
-    {"id": ""
+    {
         "id": "B1",
         "name":"sonnen sonnenBatterie 10",
         "type":"AC",
         "capacity":10.0,
         "efficiency_rank":15,
-        "average_efficiency":0.955,
+        "average_efficiency":0.955
     },
     {
         "id": "C1",
@@ -21,7 +21,7 @@
         "type":"AC",
         "capacity":7.4,
         "efficiency_rank":14,
-        "average_efficiency":0.960,
+        "average_efficiency":0.960
     },
     {
         "id": "C2",
@@ -29,7 +29,7 @@
         "type":"AC",
         "capacity":12.1,
         "efficiency_rank":12,
-        "average_efficiency":0.964,
+        "average_efficiency":0.964
     },
     {
         "id": "C3",
@@ -37,16 +37,15 @@
         "type":"DC",
         "capacity":7.4,
         "efficiency_rank":13,
-        "average_efficiency":0.960,
+        "average_efficiency":0.960
     },
-    
     {
         "id": "C4",
         "name":"KOSTAL PLENTICORE plus 5.5 und BYD Battery-Box Premium HVS 7.7",
         "type":"DC",
         "capacity":7.1,
         "efficiency_rank":9,
-        "average_efficiency":0.962,
+        "average_efficiency":0.962
     },
     {
         "id": "C5",
@@ -54,7 +53,7 @@
         "type":"DC",
         "capacity":12.3,
         "efficiency_rank":5,
-        "average_efficiency":0.965,
+        "average_efficiency":0.965
     },
     {
         "id": "D1",
@@ -62,7 +61,7 @@
         "type":"DC",
         "capacity":7.4,
         "efficiency_rank":6,
-        "average_efficiency":0.969,
+        "average_efficiency":0.969
     },
     {
         "id": "D2",
@@ -70,7 +69,7 @@
         "type":"DC",
         "capacity":9.9,
         "efficiency_rank":2,
-        "average_efficiency":0.969,
+        "average_efficiency":0.969
     },
     {
         "id": "E1",
@@ -78,7 +77,7 @@
         "type":"DC",
         "capacity":7.3,
         "efficiency_rank":8,
-        "average_efficiency":0.970,
+        "average_efficiency":0.970
     },
     {
         "id": "E2",
@@ -86,7 +85,7 @@
         "type":"DC",
         "capacity":12.2,
         "efficiency_rank":7,
-        "average_efficiency":0.970,
+        "average_efficiency":0.970
     },
     {
         "id": "F1",
@@ -94,7 +93,7 @@
         "type":"DC",
         "capacity":9.8,
         "efficiency_rank":3,
-        "average_efficiency":0.965,
+        "average_efficiency":0.965
     },    
     {
         "id": "F2",
@@ -102,7 +101,7 @@
         "type":"DC",
         "capacity":15.1,
         "efficiency_rank":4,
-        "average_efficiency":0.951,
+        "average_efficiency":0.951
     },
     {
         "id": "G1",
@@ -110,7 +109,7 @@
         "type":"DC",
         "capacity":7.0,
         "efficiency_rank":10,
-        "average_efficiency":0.952,
+        "average_efficiency":0.952
     },
     {
         "id": "G2",
@@ -118,7 +117,7 @@
         "type":"DC",
         "capacity":10.6,
         "efficiency_rank":1,
-        "average_efficiency":0.956,
+        "average_efficiency":0.956
         
     },
     {
@@ -127,23 +126,22 @@
         "type":"DC",
         "capacity":7.9,
         "efficiency_rank":11,
-        "average_efficiency":0.954,
+        "average_efficiency":0.954
     },
     {
         "id": "I1",
         "name":"Fenecon Home",
         "type":"DC",
         "capacity":16.2,
-        "efficiency_rank":nan,
-        "average_efficiency":0.955,
+        "efficiency_rank":null,
+        "average_efficiency":0.955
     },
     {
         "id": "L1",
         "name":"SolaX X3-Hybrid-15.0-D und Triple Power T-BAT H 23.0",
         "type":"DC",
         "capacity":20.6,
-        "efficiency_rank":nan,
-        "average_efficiency":0.947,
-    },
+        "efficiency_rank":null,
+        "average_efficiency":0.947
+    }
     ]
-}
