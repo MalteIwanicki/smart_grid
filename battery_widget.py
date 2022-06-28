@@ -33,9 +33,7 @@ class Battery(v.Container):
                 v.Row(children=[self.battery_average_efficiency]),
             ],
         )
-        self.battery_select = v.Select(
-            label="Battery", v_model=battery_names[0], items=battery_names
-        )
+        self.battery_select = v.Select(label="Battery", v_model="", items=battery_names)
         self.battery_select.on_event("change", self.battery_change)
 
         self.battery_card = v.Card(
@@ -68,6 +66,7 @@ class Battery(v.Container):
         self.battery_average_efficiency.v_model = str(
             self.battery["average_efficiency"].values[0]
         )
+        self.next_btn.disabled = False
         self.battery_card.loading = False
 
 

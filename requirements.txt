@@ -1,1 +1,6 @@
 ipyvuetify
+plotly
+voila
+jupyter
+pandas
+loguru

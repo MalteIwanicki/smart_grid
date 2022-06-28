@@ -59,6 +59,7 @@ class Address(v.Container):
         self.city.v_model = self.coordinates["city"]
         self.latitude.v_model = self.coordinates["latitude"]
         self.longitude.v_model = self.coordinates["longitude"]
+        self.next_btn.disabled = False
         self.address_card.loading = False
 
 
