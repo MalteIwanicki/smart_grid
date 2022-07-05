@@ -4,3 +4,4 @@ voila
 jupyter
 pandas
 loguru
+bqplot

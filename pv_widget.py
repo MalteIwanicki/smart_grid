@@ -12,8 +12,10 @@ class Photovoltaic(v.Container):
         self.pv_technology = v.Select(
             v_model="",
             label="PV technology used",
-            items=["crytSi", "CIS", "CdTe", "Unknown"],
+            items=["crystSi", "CIS", "CdTe", "Unknown"],  # TODO beschreiben im word.
         )
+
+        self.pv_technology.on_event("change", self.chose_technology)
 
         def select_pv(widget, *args):
             self.next_btn.disabled = False
@@ -94,8 +96,11 @@ class Photovoltaic(v.Container):
         )
         super().__init__(children=[pv_card])
 
+    def chose_technology(self, *args):
+        self.next_btn.disabled = False
+
 
 # %%
-Photovoltaic()
+# Photovoltaic()
 
 # %%

@@ -52,7 +52,7 @@ class Address(v.Container):
         )
         super().__init__(children=[self.address_card])
 
-    def get_address(self, widget, event, data):
+    def get_address(self, widget, *args):
         self.address_card.loading = True
         self.coordinates = get_coordinates.get_coordinates(PTV_API_KEY, widget.v_model)
         self.country.v_model = self.coordinates["country"]
