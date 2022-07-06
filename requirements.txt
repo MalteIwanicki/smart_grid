@@ -4,4 +4,6 @@ voila
 jupyter
 pandas
 loguru
-bqplot
+xlrd
+openpyxl
+fastparquet

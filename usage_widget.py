@@ -38,19 +38,13 @@ class Usage(v.Container):
 
     def usage_change(self, widget, *args):
         self.usage_card.loading = True
-        self.usage_profile = usage_df.loc[widget.v_model]
-        self.next_btn.disabled = False
+        self.file = usage_df.loc[self.usage_select.v_model]["file"]
+        # self.usage_profile = pd.read_excel(self.file).set_index("TagesNr.")
+        # self.next_btn.disabled = False
         self.usage_card.loading = False
 
 
-# get photovoltaic data
-# data = get_photovoltaic_data(coordinates["latitude"],coordinates["longitude"])
-# data_text.v_model = (
-#     f'{data}'
-# )
-
-
-# %%
-# Usage()
+u = Usage()
+u
 
 # %%

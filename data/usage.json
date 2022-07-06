@@ -1,16 +1,6 @@
 [
     {
-        "id":"profile1",
-        "data":[
-            {"time":"20160101:0100", "usage":123.45},
-            {"time":"20160101:0200", "usage":100}
-                ]
-            },
-    {
-        "id":"profile2",
-        "data":[
-            {"time":"20160101:0100", "usage":123.45},
-            {"time":"20160101:0200", "usage":100}
-                ]
-            }
+        "id":"Verbrauchsdata von 1999",
+        "file":"data/verbrauchsdata_1999_hourly.parquet"
+    }
 ]
