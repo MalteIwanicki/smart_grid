@@ -37,16 +37,16 @@ def get_photovoltaic_data(
 
 
 # %%
-result = get_photovoltaic_data(
-    latitude=50,
-    longitude=50,
-    pv_peak_power=2,
-    pv_tech="CIS",
-    pv_loss=0,
-    pv_angle=0,
-    pv_azimuth=0,
-)
-result
+# result = get_photovoltaic_data(
+#     latitude=50,
+#     longitude=50,
+#     pv_peak_power=2,
+#     pv_tech="CIS",
+#     pv_loss=0,
+#     pv_angle=0,
+#     pv_azimuth=0,
+# )
+# # result
 # [
 #     {"time": data["time"], "PV system power": data["P"]}
 #     for data in result["outputs"]["hourly"]

@@ -1,6 +1,10 @@
 # %%
+import statistics
+
 import pandas as pd
 import ipyvuetify as v
+import ipywidgets
+from matplotlib import pyplot as plt
 
 USAGE_FILE = "data/usage.json"
 
@@ -36,15 +40,27 @@ class Usage(v.Container):
         )
         super().__init__(children=[self.usage_card])
 
+    def get_usage_fig(self):
+        x = [day for day in self.usage_profile.index[::5]]
+        y = [sum(day) for day in self.usage_profile.values]
+        y = [
+            statistics.mean(values)
+            for values in zip(y[::5], y[1::5], y[2::5], y[3::5], y[4::5])
+        ]
+        plot = ipywidgets.Output()
+        with plot as out:
+            fig, ax = plt.subplots(figsize=(10, 10))
+            ax.plot(x, y)
+            plt.show()
+        return plot
+
     def usage_change(self, widget, *args):
         self.usage_card.loading = True
         self.file = usage_df.loc[self.usage_select.v_model]["file"]
-        # self.usage_profile = pd.read_excel(self.file).set_index("TagesNr.")
+        self.usage_profile = pd.read_parquet(self.file)
+        self.children = [self.usage_card, self.get_usage_fig()]
         # self.next_btn.disabled = False
         self.usage_card.loading = False
 
-
-u = Usage()
-u
 
 # %%

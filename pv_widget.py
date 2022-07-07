@@ -1,5 +1,8 @@
 # %%
 import ipyvuetify as v
+import ipywidgets
+from matplotlib import pyplot as plt
+
 from ipywidgets import jslink
 
 
@@ -8,17 +11,15 @@ from ipywidgets import jslink
 class Photovoltaic(v.Container):
     def __init__(self):
         self.pv_title = v.Subheader(children=["Photovoltaic"])
-
+        self.pv_power_data = []
         self.pv_technology = v.Select(
             v_model="",
             label="PV technology used",
             items=["crystSi", "CIS", "CdTe", "Unknown"],  # TODO beschreiben im word.
         )
 
-        self.pv_technology.on_event("change", self.chose_technology)
-
         def select_pv(widget, *args):
-            self.next_btn.disabled = False
+            self.calc_btn.disabled = False
 
         self.pv_technology.on_event("change", select_pv)
 
@@ -58,7 +59,7 @@ class Photovoltaic(v.Container):
         )
         jslink((self.pv_azimuth, "v_model"), (self.pv_azimuth_text, "v_model"))
 
-        pv_card = v.Card(
+        self.pv_card = v.Card(
             elevation=0,
             children=[
                 v.Row(children=[self.pv_title]),
@@ -94,10 +95,30 @@ class Photovoltaic(v.Container):
                 ),
             ],
         )
-        super().__init__(children=[pv_card])
+        super().__init__(children=[self.pv_card])
 
-    def chose_technology(self, *args):
-        self.next_btn.disabled = False
+    def get_fig(self):
+        data = self.pv_power_data
+        data = self.get_days_average(data)[::5]  # TODO what amount of average?
+        x = [o["time"] for o in data]
+        y = [o["PV system power"] for o in data]
+        plot = ipywidgets.Output()
+        with plot as out:
+            fig, ax = plt.subplots(figsize=(10, 10))
+            ax.plot(x, y)
+            plt.show()
+        return plot
+
+    def get_days_average(self, hourly_data):
+        days_average = {}
+        for hour in hourly_data:
+            day_key = hour["time"].split(":")[0]
+            days_average.setdefault(day_key, 0)
+            days_average[day_key] += 1 / 24 * hour["PV system power"]
+        days_average = [
+            {"time": key, "PV system power": val} for key, val in days_average.items()
+        ]
+        return days_average
 
 
 # %%
