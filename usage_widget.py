@@ -16,6 +16,7 @@ usage_names = list(usage_df.index)
 
 class Usage(v.Container):
     def __init__(self):
+        self.usage_profile = None
         self.usage_title = v.Subheader(children=["Usage"])
 
         self.usage_select = v.Select(

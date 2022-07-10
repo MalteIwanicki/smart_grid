@@ -1,4 +1,5 @@
 # %%
+import statistics
 import ipyvuetify as v
 import ipywidgets
 from matplotlib import pyplot as plt
@@ -99,9 +100,13 @@ class Photovoltaic(v.Container):
 
     def get_fig(self):
         data = self.pv_power_data
-        data = self.get_days_average(data)[::5]  # TODO what amount of average?
-        x = [o["time"] for o in data]
-        y = [o["PV system power"] for o in data]
+
+        x = [day for day in data.index[::5]]
+        y = [sum(day) for day in data.values]
+        y = [
+            statistics.mean(values)
+            for values in zip(y[::5], y[1::5], y[2::5], y[3::5], y[4::5])
+        ]
         plot = ipywidgets.Output()
         with plot as out:
             fig, ax = plt.subplots(figsize=(10, 10))

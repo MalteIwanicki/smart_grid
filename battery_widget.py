@@ -14,6 +14,7 @@ battery_names = list(battery_df["name"])
 
 class Battery(v.Container):
     def __init__(self):
+        self.battery = None
         self.battery_title = v.Subheader(children=["Battery"])
 
         self.battery_ranking = v.TextField(
