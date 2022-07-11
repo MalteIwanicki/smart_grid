@@ -3,7 +3,7 @@
         "id": "A1",
         "name":"VARTA pulse neo 6",
         "type":"AC",
-        "capacity":5.8,
+        "capacity":5800,
         "efficiency_rank":12,
         "average_efficiency":0.978
     },
@@ -11,7 +11,7 @@
         "id": "B1",
         "name":"sonnen sonnenBatterie 10",
         "type":"AC",
-        "capacity":10.0,
+        "capacity":10000,
         "efficiency_rank":15,
         "average_efficiency":0.955
     },
@@ -19,7 +19,7 @@
         "id": "C1",
         "name":"KOSTAL PIKO MP plus 4.6-2 (AC) und BYD Battery-Box Premium HVS 7.7",
         "type":"AC",
-        "capacity":7.4,
+        "capacity":7400,
         "efficiency_rank":14,
         "average_efficiency":0.960
     },
@@ -27,7 +27,7 @@
         "id": "C2",
         "name":"KOSTAL PLENTICORE BI 10/26 und BYD Battery-Box Premium HVS 12.8",
         "type":"AC",
-        "capacity":12.1,
+        "capacity":12100,
         "efficiency_rank":12,
         "average_efficiency":0.964
     },
@@ -35,7 +35,7 @@
         "id": "C3",
         "name":"KOSTAL PIKO MP plus 4.6-2 (DC) und BYD Battery-Box Premium HVS 7.7",
         "type":"DC",
-        "capacity":7.4,
+        "capacity":7400,
         "efficiency_rank":13,
         "average_efficiency":0.960
     },
@@ -43,7 +43,7 @@
         "id": "C4",
         "name":"KOSTAL PLENTICORE plus 5.5 und BYD Battery-Box Premium HVS 7.7",
         "type":"DC",
-        "capacity":7.1,
+        "capacity":7100,
         "efficiency_rank":9,
         "average_efficiency":0.962
     },
@@ -51,7 +51,7 @@
         "id": "C5",
         "name":"KOSTAL PLENTICORE plus 10 und BYD Battery-Box Premium HVS 12.8",
         "type":"DC",
-        "capacity":12.3,
+        "capacity":12300,
         "efficiency_rank":5,
         "average_efficiency":0.965
     },
@@ -59,7 +59,7 @@
         "id": "D1",
         "name":"Fronius Primo GEN24 6.0 Plus und BYD Battery-Box Premium HVS 7.7",
         "type":"DC",
-        "capacity":7.4,
+        "capacity":7400,
         "efficiency_rank":6,
         "average_efficiency":0.969
     },
@@ -67,7 +67,7 @@
         "id": "D2",
         "name":"Fronius Symo GEN24 10.0 Plus und BYD Battery-Box Premium HVS 10.2",
         "type":"DC",
-        "capacity":9.9,
+        "capacity":9900,
         "efficiency_rank":2,
         "average_efficiency":0.969
     },
@@ -75,7 +75,7 @@
         "id": "E1",
         "name":"GoodWe GW5000-EH und BYD Battery-Box Premium HVS 7.7",
         "type":"DC",
-        "capacity":7.3,
+        "capacity":7300,
         "efficiency_rank":8,
         "average_efficiency":0.970
     },
@@ -83,7 +83,7 @@
         "id": "E2",
         "name":"GoodWe GW10K-ET und BYD Battery-Box Premium HVS 12.8",
         "type":"DC",
-        "capacity":12.2,
+        "capacity":12200,
         "efficiency_rank":7,
         "average_efficiency":0.970
     },
@@ -91,7 +91,7 @@
         "id": "F1",
         "name":"KACO blueplanet 10.0 TL3 und BYD Battery-Box Premium HVS 10.2",
         "type":"DC",
-        "capacity":9.8,
+        "capacity":9800,
         "efficiency_rank":3,
         "average_efficiency":0.965
     },    
@@ -99,7 +99,7 @@
         "id": "F2",
         "name":"KACO blueplanet 10.0 TL3 und Energy Depot Domus 2.5",
         "type":"DC",
-        "capacity":15.1,
+        "capacity":15100,
         "efficiency_rank":4,
         "average_efficiency":0.951
     },
@@ -107,7 +107,7 @@
         "id": "G1",
         "name":"RCT Power Power Storage DC 6.0 und Power Battery 7.6",
         "type":"DC",
-        "capacity":7.0,
+        "capacity":7000,
         "efficiency_rank":10,
         "average_efficiency":0.952
     },
@@ -115,7 +115,7 @@
         "id": "G2",
         "name":"RCT Power Power Storage DC 10.0 und Power Battery 11.5",
         "type":"DC",
-        "capacity":10.6,
+        "capacity":10600,
         "efficiency_rank":1,
         "average_efficiency":0.956
         
@@ -124,7 +124,7 @@
         "id": "H1",
         "name":"VIESSMANN Vitocharge VX3 Typ 4.6A8",
         "type":"DC",
-        "capacity":7.9,
+        "capacity":7900,
         "efficiency_rank":11,
         "average_efficiency":0.954
     },
@@ -132,7 +132,7 @@
         "id": "I1",
         "name":"Fenecon Home",
         "type":"DC",
-        "capacity":16.2,
+        "capacity":16200,
         "efficiency_rank":null,
         "average_efficiency":0.955
     },
@@ -140,7 +140,7 @@
         "id": "L1",
         "name":"SolaX X3-Hybrid-15.0-D und Triple Power T-BAT H 23.0",
         "type":"DC",
-        "capacity":20.6,
+        "capacity":20600,
         "efficiency_rank":null,
         "average_efficiency":0.947
     }

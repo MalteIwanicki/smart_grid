@@ -1,8 +1,8 @@
 # %%
-import statistics
 import ipyvuetify as v
-import ipywidgets
-from matplotlib import pyplot as plt
+import ipywidgets as widgets
+from IPython.display import clear_output
+import plotly.express as px
 
 from ipywidgets import jslink
 
@@ -30,7 +30,7 @@ class Photovoltaic(v.Container):
             type="number",
             v_model="1",
         )
-        self.pv_loss = v.Slider(v_model=0, max=100, min=0)
+        self.pv_loss = v.Slider(v_model=14, max=100, min=0)
         self.pv_loss_text = v.TextField(
             label="System loss in %",
             v_model="",
@@ -99,19 +99,33 @@ class Photovoltaic(v.Container):
         super().__init__(children=[self.pv_card])
 
     def get_fig(self):
-        data = self.pv_power_data
+        df = self.pv_power_data
 
-        x = [day for day in data.index[::5]]
-        y = [sum(day) for day in data.values]
-        y = [
-            statistics.mean(values)
-            for values in zip(y[::5], y[1::5], y[2::5], y[3::5], y[4::5])
-        ]
-        plot = ipywidgets.Output()
-        with plot as out:
-            fig, ax = plt.subplots(figsize=(10, 10))
-            ax.plot(x, y)
-            plt.show()
+        plot = widgets.Output()
+        with plot:
+            clear_output(wait=True)
+            fig = px.line(df, x="date", y="production")
+            fig.update_xaxes(
+                rangeslider_visible=True,
+                rangeselector=dict(
+                    buttons=list(
+                        [
+                            dict(
+                                count=24, label="1d", step="hour", stepmode="backward"
+                            ),
+                            dict(count=7, label="1w", step="day", stepmode="backward"),
+                            dict(
+                                count=1, label="1m", step="month", stepmode="backward"
+                            ),
+                            dict(
+                                count=6, label="6m", step="month", stepmode="backward"
+                            ),
+                            dict(step="all"),
+                        ]
+                    )
+                ),
+            )
+            fig.show(renderer="notebook")
         return plot
 
     def get_days_average(self, hourly_data):

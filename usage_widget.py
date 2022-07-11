@@ -1,10 +1,9 @@
 # %%
-import statistics
-
 import pandas as pd
 import ipyvuetify as v
-import ipywidgets
-from matplotlib import pyplot as plt
+import ipywidgets as widgets
+from IPython.display import clear_output
+import plotly.express as px
 
 USAGE_FILE = "data/usage.json"
 
@@ -42,17 +41,33 @@ class Usage(v.Container):
         super().__init__(children=[self.usage_card])
 
     def get_usage_fig(self):
-        x = [day for day in self.usage_profile.index[::5]]
-        y = [sum(day) for day in self.usage_profile.values]
-        y = [
-            statistics.mean(values)
-            for values in zip(y[::5], y[1::5], y[2::5], y[3::5], y[4::5])
-        ]
-        plot = ipywidgets.Output()
-        with plot as out:
-            fig, ax = plt.subplots(figsize=(10, 10))
-            ax.plot(x, y)
-            plt.show()
+        df = self.usage_profile
+        df["usage"] = -df["usage"]
+        plot = widgets.Output()
+        with plot:
+            clear_output(wait=True)
+            fig = px.line(df, x="date", y="usage")
+            fig.update_xaxes(
+                rangeslider_visible=True,
+                rangeselector=dict(
+                    buttons=list(
+                        [
+                            dict(
+                                count=24, label="1d", step="hour", stepmode="backward"
+                            ),
+                            dict(count=7, label="1w", step="day", stepmode="backward"),
+                            dict(
+                                count=1, label="1m", step="month", stepmode="backward"
+                            ),
+                            dict(
+                                count=6, label="6m", step="month", stepmode="backward"
+                            ),
+                            dict(step="all"),
+                        ]
+                    )
+                ),
+            )
+            fig.show(renderer="notebook")
         return plot
 
     def usage_change(self, widget, *args):
@@ -60,7 +75,7 @@ class Usage(v.Container):
         self.file = usage_df.loc[self.usage_select.v_model]["file"]
         self.usage_profile = pd.read_parquet(self.file)
         self.children = [self.usage_card, self.get_usage_fig()]
-        # self.next_btn.disabled = False
+        self.next_btn.disabled = False
         self.usage_card.loading = False
 
 
