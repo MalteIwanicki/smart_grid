@@ -1,4 +1,5 @@
 # %%
+from faulthandler import disable
 import pandas as pd
 import ipyvuetify as v
 import ipywidgets as widgets
@@ -17,6 +18,20 @@ class Usage(v.Container):
     def __init__(self):
         self.usage_profile = None
         self.usage_title = v.Subheader(children=["Usage"])
+        self.usage_input = v.TextField(
+            label="Yearly usage in kWh/a",
+            reverse=True,
+            type="number",
+            v_model="1",
+        )
+        self.usage_factor = v.TextField(
+            label="Factor",
+            reverse=True,
+            type="number",
+            disabled=True,
+            v_model="0",
+        )
+        self.usage_input.on_event("change", self.usage_change)
 
         self.usage_select = v.Select(
             label="Usage Profile", v_model="", items=usage_names
@@ -33,9 +48,11 @@ class Usage(v.Container):
                         v.Col(
                             cols=7,
                             children=[self.usage_select],
-                        )
+                        ),
+                        v.Col(cols=5, children=[self.usage_input]),
                     ]
                 ),
+                v.Row(children=[self.usage_factor]),
             ],
         )
         super().__init__(children=[self.usage_card])
@@ -70,10 +87,18 @@ class Usage(v.Container):
             fig.show(renderer="notebook")
         return plot
 
+    def get_factor(self):
+        return int(self.usage_input.v_model) / self.usage_base
+
     def usage_change(self, widget, *args):
         self.usage_card.loading = True
         self.file = usage_df.loc[self.usage_select.v_model]["file"]
+        self.usage_base = usage_df.loc[self.usage_select.v_model]["base"]
         self.usage_profile = pd.read_parquet(self.file)
+        self.usage_factor.v_model = self.get_factor()
+        self.usage_profile["usage"] = self.usage_profile.apply(
+            lambda row: row["usage"] * self.get_factor(), axis=1
+        )
         self.children = [self.usage_card, self.get_usage_fig()]
         self.next_btn.disabled = False
         self.usage_card.loading = False

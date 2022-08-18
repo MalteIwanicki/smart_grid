@@ -1,6 +1,12 @@
 [
     {
         "id":"Verbrauchsdata von 1999",
-        "file":"data/verbrauchsdata_1999_hourly.parquet"
+        "file":"data/verbrauchsdata_1999_hourly.parquet",
+        "base":1000
+    },
+    {
+        "id":"Verbrauchsdata von 2022",
+        "file":"data/verbrauchsdata_2022_hourly.parquet",
+        "base":1000000
     }
 ]

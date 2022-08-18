@@ -6,4 +6,5 @@ pandas
 loguru
 xlrd
 openpyxl
+tqdm
 fastparquet

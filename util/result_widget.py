@@ -7,7 +7,6 @@ import plotly.express as px
 import numpy as np
 from loguru import logger
 from ipywidgets import jslink
-import result_fig
 from datetime import datetime
 
 MONTHS = [
@@ -71,12 +70,14 @@ class Result(v.Container):
 
         super().__init__(children=[self.card, self.totals_row])
 
-    def calc_production_surplus(self, row):
+    @staticmethod
+    def calc_production_surplus(row):
         p = row["production"]
         u = row["usage"]
         return p + u
 
-    def calc_battery_charging(self, power, current_charge, battery_capacity):
+    @staticmethod
+    def calc_battery_charging(power, current_charge, battery_capacity):
         """
         Returns:
             float: How much the battery is charged or discharged (negative).
@@ -97,7 +98,7 @@ class Result(v.Container):
     def prepare_df(self, production, usage, battery):
         df = production
         df["usage"] = usage["usage"]
-        df["production_surplus"] = df.apply(self.calc_production_surplus, axis=1)
+        df["production_surplus"] = df.apply(Result.calc_production_surplus, axis=1)
 
         df["charge"] = 0
         df["to_battery"] = 0
@@ -106,7 +107,7 @@ class Result(v.Container):
         for i in df.index:
             power = df.loc[i, "production_surplus"]
             current_charge = df.loc[i - 1, "charge"] if i != 0 else 0
-            to_battery = self.calc_battery_charging(
+            to_battery = Result.calc_battery_charging(
                 power, current_charge, battery_capacity
             )
             df.loc[i, "to_battery"] = to_battery
