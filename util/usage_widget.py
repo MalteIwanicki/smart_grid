@@ -88,7 +88,9 @@ class Usage(v.Container):
         return plot
 
     def get_factor(self):
-        return int(self.usage_input.v_model) / self.usage_base
+        return (
+            int(self.usage_input.v_model) * 1000 / self.usage_base
+        )  # *1000 so its in W not kw
 
     def usage_change(self, widget, *args):
         self.usage_card.loading = True

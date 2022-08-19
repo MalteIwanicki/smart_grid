@@ -21,7 +21,9 @@ class Battery(v.Container):
             label="Efficiency ranking", v_model="", disabled=True
         )
         self.battery_type = v.TextField(label="Type", v_model="", disabled=True)
-        self.battery_capacity = v.TextField(label="Capacity", v_model="", disabled=True)
+        self.battery_capacity = v.TextField(
+            label="Capacity", v_model="", disabled=True, suffix="W"
+        )
         self.battery_average_efficiency = v.TextField(
             label="Average efficiency", v_model="", disabled=True
         )
@@ -65,7 +67,7 @@ class Battery(v.Container):
         self.battery_type.v_model = str(self.battery["type"].values[0])
         self.battery_capacity.v_model = str(self.battery["capacity"].values[0])
         self.battery_average_efficiency.v_model = str(
-            self.battery["average_efficiency"].values[0]
+            round(self.battery["average_efficiency"].values[0], 4)
         )
         self.next_btn.disabled = False
         self.battery_card.loading = False
