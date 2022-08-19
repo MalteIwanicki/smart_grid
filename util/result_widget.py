@@ -22,6 +22,7 @@ MONTHS = [
     "October",
     "November",
     "December",
+    "All",
 ]
 
 
@@ -185,9 +186,14 @@ class Result(v.Container):
     def select_month(self, *args):
         self.card.loading = True
         month_index = MONTHS.index(self.month_selector.v_model)
+        fig = (
+            self.get_fig(self.dfs[month_index])
+            if month_index != 12
+            else self.get_fig(self.df)
+        )
         self.children = [
             self.card,
-            self.get_fig(self.dfs[month_index]),
+            fig,
             self.totals_row,
         ]
         self.card.loading = False
